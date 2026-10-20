@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopSphere | Local QA Store</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <section id="login-view" class="auth-shell">
+    <div class="auth-art">
+      <span class="eyebrow">LOCAL QA STOREFRONT</span>
+      <h1>Test every step of a better shopping experience.</h1>
+      <p>A realistic, self-contained e-commerce application for manual testing practice.</p>
+      <div class="feature-list">
+        <span>✓ Product discovery</span><span>✓ Cart state management</span><span>✓ Checkout validation</span>
+      </div>
+    </div>
+    <form id="login-form" class="auth-card" novalidate>
+      <div class="brand-mark">S<span>•</span></div>
+      <h2>Welcome back</h2>
+      <p class="muted">Sign in to continue to ShopSphere.</p>
+      <label for="username">Username</label>
+      <input id="username" name="username" autocomplete="username" placeholder="qa_user" required>
+      <small id="username-error" class="field-error"></small>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+      <small id="password-error" class="field-error"></small>
+      <button class="primary-button full-width" type="submit" data-testid="login-button">Sign in</button>
+      <p class="hint">Demo login: <strong>qa_user</strong> / <strong>qa123</strong></p>
+    </form>
+  </section>
+
+  <div id="store-view" class="hidden">
+    <header class="topbar">
+      <a class="logo" href="#" data-action="home">Shop<span>Sphere</span></a>
+      <nav><a href="#" data-action="home">Store</a><a href="#" data-action="orders">Orders</a></nav>
+      <div class="header-actions">
+        <span id="welcome-user" class="welcome-user"></span>
+        <button class="icon-button" data-action="cart" aria-label="Open cart">🛒 <b id="cart-count">0</b></button>
+        <button class="ghost-button" data-action="logout">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="catalog-view">
+        <div class="hero-banner">
+          <div><span class="eyebrow">SPRING COLLECTION</span><h1>Everything you need,<br><em>beautifully selected.</em></h1><p>Curated essentials for your everyday life.</p></div>
+          <div class="hero-shape">✦</div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">THE CATALOGUE</span><h2>Find your next favourite</h2></div><span id="results-count" class="muted"></span></div>
+        <div class="toolbar">
+          <label class="search-box">⌕ <input id="search-input" placeholder="Search products..." aria-label="Search products"></label>
+          <select id="category-filter" aria-label="Filter by category"><option value="all">All categories</option></select>
+          <select id="sort-select" aria-label="Sort products"><option value="featured">Sort: Featured</option><option value="low">Price: Low to high</option><option value="high">Price: High to low</option><option value="rating">Top rated</option></select>
+        </div>
+        <div id="product-grid" class="product-grid"></div>
+        <div id="empty-state" class="empty-state hidden"><div>⌕</div><h3>No products found</h3><p>Try a different search or category.</p></div>
+      </section>
+
+      <section id="orders-view" class="page-section hidden">
+        <div class="section-heading"><div><span class="eyebrow">ACCOUNT</span><h2>Your orders</h2></div></div>
+        <div id="orders-list"></div>
+      </section>
+
+      <section id="cart-view" class="page-section hidden">
+        <button class="back-link" data-action="home">← Continue shopping</button>
+        <div class="section-heading"><div><span class="eyebrow">YOUR BAG</span><h2>Shopping cart</h2></div></div>
+        <div class="two-column"><div id="cart-items"></div><aside id="cart-summary" class="summary-card"></aside></div>
+      </section>
+
+      <section id="checkout-view" class="page-section hidden">
+        <button class="back-link" data-action="cart">← Back to cart</button>
+        <div class="section-heading"><div><span class="eyebrow">SECURE CHECKOUT</span><h2>Complete your order</h2></div><span class="step-indicator">01 Information&nbsp;&nbsp;—&nbsp;&nbsp;02 Confirmation</span></div>
+        <div class="two-column"><form id="checkout-form" class="checkout-form" novalidate>
+          <div class="form-card"><h3>Contact information</h3><div class="form-grid"><div><label for="first-name">First name</label><input id="first-name" required><small class="field-error"></small></div><div><label for="last-name">Last name</label><input id="last-name" required><small class="field-error"></small></div></div><label for="email">Email address</label><input id="email" type="email" placeholder="you@example.com" required><small class="field-error"></small></div>
+          <div class="form-card"><h3>Delivery address</h3><label for="address">Street address</label><input id="address" required><small class="field-error"></small><div class="form-grid"><div><label for="city">City</label><input id="city" required><small class="field-error"></small></div><div><label for="postal-code">Postal code</label><input id="postal-code" inputmode="numeric" required><small class="field-error"></small></div></div></div>
+          <div class="form-card"><h3>Payment</h3><div class="payment-note">🔒 This is a demo checkout. No real payment is processed.</div><label for="card-number">Card number</label><input id="card-number" inputmode="numeric" placeholder="4242 4242 4242 4242" required><small class="field-error"></small><div class="form-grid"><div><label for="expiry">Expiry</label><input id="expiry" placeholder="MM/YY" required><small class="field-error"></small></div><div><label for="cvv">CVV</label><input id="cvv" inputmode="numeric" placeholder="123" required><small class="field-error"></small></div></div></div>
+          <button class="primary-button full-width" type="submit">Place order <span>→</span></button>
+        </form><aside id="checkout-summary" class="summary-card"></aside></div>
+      </section>
+
+      <section id="confirmation-view" class="page-section hidden">
+        <div class="confirmation-card"><div class="success-icon">✓</div><span class="eyebrow">ORDER CONFIRMED</span><h2>Thank you for your order!</h2><p id="confirmation-message"></p><div id="confirmation-items" class="confirmation-items"></div><button class="primary-button" data-action="home">Continue shopping</button></div>
+      </section>
+    </main>
+    <footer><span>© 2026 ShopSphere</span><span>Built for local manual testing · v1.0.0</span></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

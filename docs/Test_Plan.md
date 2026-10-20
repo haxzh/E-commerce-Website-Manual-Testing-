@@ -1,23 +1,23 @@
-# Test Plan — Harsh's E-commerce Demo Store Testing
+# Test Plan — Harsh's Local E-commerce Application
 
 | Field | Value |
 | --- | --- |
 | Document owner | Harsh |
 | Version | 1.0 |
 | Status | Ready for execution |
-| Application | [SauceDemo](https://www.saucedemo.com/) |
+| Application | Local e-commerce application |
 | Test approach | Manual functional, negative, UI and regression testing |
 
 ## 1. Objective
 
-Validate the most important customer journeys in the SauceDemo store and produce traceable evidence for each observed result. This plan is designed as a practical manual testing portfolio deliverable for Harsh.
+Validate the most important customer journeys in the local e-commerce application and produce traceable evidence for each observed result. This plan is designed as a practical manual testing portfolio deliverable for Harsh.
 
 ## 2. Application and test data
 
-- Application: https://www.saucedemo.com/
-- Credentials: use only the demo credentials shown on the application login page.
-- Test products: select products available in the current inventory; record the selected product in Actual Result when relevant.
-- Checkout data: use non-sensitive demo values only. Never enter real personal or payment data.
+- Application: local e-commerce application
+- Credentials: use only approved local test credentials.
+- Test products: select products available in the current inventory; record the selected product and quantity in Actual Result when relevant.
+- Checkout data: use non-sensitive synthetic values only. Never enter real personal or payment data.
 
 ## 3. In scope
 
@@ -62,7 +62,7 @@ Record these values before execution:
 
 ## 7. Entry criteria
 
-- Demo site is reachable
+- Local application is reachable
 - Browser is available
 - Test cases and test data are prepared
 - Test evidence folder/location is available
@@ -91,14 +91,14 @@ Each defect report should include ID, title, environment, preconditions, steps t
 
 | Risk / assumption | Impact | Mitigation |
 | --- | --- | --- |
-| Demo site changes or is unavailable | Tests may be blocked | Record timestamp and environment; retry later |
-| Demo accounts behave differently | Results may vary | Record the account type used |
+| Local application changes or is unavailable | Tests may be blocked | Record timestamp and environment; retry later |
+| Local test accounts behave differently | Results may vary | Record the account type used |
 | Browser-specific behaviour | Defect may not reproduce elsewhere | Include browser/version in every result |
 | No real payment gateway exists | Payment coverage is limited | Keep payment processing out of scope |
 
 ## 11. Execution rules
 
 - A test is `Pass` only when the observed result satisfies the expected result.
-- A test is `Fail` only when the mismatch is reproducible or supported by clear evidence.
+- A test is `Fail` only when the mismatch is reproducible or supported by clear evidence and a defect ID is recorded.
 - Use `Blocked` when execution cannot continue because of an environment or dependency issue.
 - Leave `Actual Result` blank until the case is executed; do not pre-fill pass/fail outcomes.

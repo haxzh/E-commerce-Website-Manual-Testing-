@@ -1,0 +1,12 @@
+# Local execution evidence and private test data
+evidence/
+test-data/local/
+*.har
+*.log
+*.mp4
+*.webm
+
+# Operating-system and editor files
+Thumbs.db
+.DS_Store
+.vscode/
